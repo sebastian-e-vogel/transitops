@@ -9,6 +9,7 @@
       "Bash(git push --force *)",
       "Bash(git push -f *)",
       "Bash(git push origin main*)",
+      "Bash(git push origin develop*)",
       "Bash(gh pr merge *)"
     ]
   }
