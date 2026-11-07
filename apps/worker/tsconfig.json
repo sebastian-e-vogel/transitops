@@ -1,0 +1,17 @@
+{
+  "extends": "@transitops/config/tsconfig.base.json",
+  "compilerOptions": {
+    "module": "nodenext",
+    "declaration": true,
+    "moduleResolution": "nodenext",
+    "isolatedModules": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "ES2023",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "types": ["vitest/globals", "node"]
+  }
+}
