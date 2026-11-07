@@ -39,6 +39,20 @@ pnpm --filter @transitops/api format      # write Prettier formatting
 pnpm --filter @transitops/api format:check
 ```
 
+## Worker
+
+`apps/worker` is a NestJS standalone application context (no HTTP, ESM, tested with Vitest). It is empty for now: it logs on startup, stays alive with a keepalive timer, and shuts down cleanly on SIGINT or SIGTERM (exit code 0; if shutdown hangs past the 10 second timeout or fails, it logs an error and exits 1). It needs no environment variables.
+
+```sh
+pnpm --filter @transitops/worker start:dev   # dev mode with watch
+pnpm --filter @transitops/worker build
+pnpm --filter @transitops/worker start:prod  # runs dist/main, build first
+pnpm --filter @transitops/worker test
+pnpm --filter @transitops/worker lint
+pnpm --filter @transitops/worker format      # write Prettier formatting
+pnpm --filter @transitops/worker format:check
+```
+
 ## Web
 
 `apps/web` is a Next.js app (App Router, tested with Vitest). It listens on port 3000 by default.
