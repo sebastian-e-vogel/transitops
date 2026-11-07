@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.next/
+.turbo/
+
+.env
+.env.*
+!.env.example
+
+.claude/worktrees/
+.claude/settings.local.json
+CLAUDE.local.md
+
+.docs
+
+.DS_Store
