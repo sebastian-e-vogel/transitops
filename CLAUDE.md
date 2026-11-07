@@ -26,7 +26,8 @@ deltas). Redis and BullMQ are added only when a ticket needs them.
 - Everything is in English: code, commits, tickets, PRs, UI and conversation.
 - Never modify anything inside `node_modules`.
 - Never read `.env` files. Never commit secrets.
-- Never push to `main`, force-push or merge a PR. The user merges.
+- `develop` is the base branch: work branches from it and PRs target it.
+- Never push to `main` or `develop`, force-push or merge a PR. The user merges.
 - GitHub is the source of truth for ticket status.
 
 ## Docs
