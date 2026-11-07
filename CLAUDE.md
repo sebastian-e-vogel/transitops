@@ -3,8 +3,8 @@
 Local-first public transit observability platform: real-time vehicles, incident detection, historical
 replay and event simulation.
 
-There is no application code yet. M0 was validated in a separate prototype that is not part of this
-repo, so work starts at M1.
+Application code is just starting: only the `apps/api` NestJS starter exists. M0 was validated in a
+separate prototype that is not part of this repo, so work starts at M1.
 
 ## Architecture
 
