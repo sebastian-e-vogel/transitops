@@ -24,6 +24,27 @@ nvm use
 pnpm install
 ```
 
+## Environment variables
+
+Backend configuration lives in a root `.env` file. It is gitignored; `.env.example` is the template.
+
+```sh
+cp .env.example .env
+```
+
+The API loads the root `.env` on start (`start:dev` and `start:prod`). The file is optional, and variables
+already set in the environment win over it. Values are validated at startup: if one is invalid, the API
+prints the variable name (never its value) and exits with code 1. An empty value counts as unset.
+
+| Variable                                                             | Used by        | Notes                                                                                         |
+| -------------------------------------------------------------------- | -------------- | --------------------------------------------------------------------------------------------- |
+| `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`, `POSTGRES_PORT` | Docker Compose | Defaults as in `docker-compose.yml`. `POSTGRES_PASSWORD` is secret.                           |
+| `PORT`                                                               | API            | Optional, default `3001`.                                                                     |
+| `DATABASE_URL`                                                       | API            | Optional for now, must be a valid URL when set. Contains the password, so treat it as secret. |
+| `MBTA_API_KEY`                                                       | API            | Optional, secret, backend only. Not used yet.                                                 |
+
+Web variables do not come from the root file: Next.js only loads env files from `apps/web`.
+
 ## Database
 
 PostgreSQL with PostGIS runs in Docker. Docker must be running.
