@@ -93,6 +93,29 @@ pnpm --filter @transitops/worker format      # write Prettier formatting
 pnpm --filter @transitops/worker format:check
 ```
 
+## Contracts
+
+`packages/contracts` (`@transitops/contracts`) holds the Zod schemas shared by the apps (ESM, tested with Vitest). It currently exports `DataSourceSchema`, `ProviderSchema` and `VehicleObservationSchema` with their inferred types. Timestamps (`observedAt`, `receivedAt`) must be ISO 8601 UTC with a `Z` suffix; converting provider offsets such as `-05:00` is the normalizer's job.
+
+Its exports point at `dist`, which is gitignored. Build it with:
+
+```sh
+pnpm --filter @transitops/contracts build
+```
+
+Dependents must build it first (for their own build, tests and type checks). To build everything a package depends on, without the package itself:
+
+```sh
+pnpm --filter "<dependent>^..." build
+```
+
+```sh
+pnpm --filter @transitops/contracts test
+pnpm --filter @transitops/contracts lint
+pnpm --filter @transitops/contracts format      # write Prettier formatting
+pnpm --filter @transitops/contracts format:check
+```
+
 ## Web
 
 `apps/web` is a Next.js app (App Router, tested with Vitest). It listens on port 3000 by default.
