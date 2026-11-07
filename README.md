@@ -6,7 +6,7 @@ anomalies, and lets you replay past activity or simulate events.
 It starts with the [MBTA](https://www.mbta.com/) network in Boston. This is a personal project, not
 affiliated with the MBTA.
 
-**Status:** early development. There is no application code yet.
+**Status:** early development.
 
 ## Prerequisites
 
@@ -22,4 +22,16 @@ Installing on another Node major version fails with `ERR_PNPM_UNSUPPORTED_ENGINE
 ```sh
 nvm use
 pnpm install
+```
+
+## API
+
+`apps/api` is a NestJS app (ESM, tested with Vitest). It listens on port 3001 unless `PORT` is set.
+
+```sh
+pnpm --filter @transitops/api start:dev   # dev mode with watch, http://localhost:3001
+pnpm --filter @transitops/api build
+pnpm --filter @transitops/api start:prod  # runs dist/main, build first
+pnpm --filter @transitops/api test        # unit tests
+pnpm --filter @transitops/api test:e2e    # e2e tests
 ```
