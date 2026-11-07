@@ -24,6 +24,25 @@ nvm use
 pnpm install
 ```
 
+## Database
+
+PostgreSQL with PostGIS runs in Docker. Docker must be running.
+
+```sh
+docker compose up -d --wait   # start and wait until healthy
+docker compose down           # stop, keeps the data volume
+```
+
+The image (`postgis/postgis:17-3.5`) has no arm64 build, so on Apple Silicon it runs emulated
+(`platform: linux/amd64`) and the first start is slow.
+
+Defaults, overridable with environment variables: `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`
+(all `transitops`) and `POSTGRES_PORT` (`5432`). The port is bound to `127.0.0.1` only. The Compose
+project is named `transitops`, so every worktree shares one database and one port.
+
+`POSTGRES_PASSWORD` (like the user and database name) only applies on first init of the volume. Changing
+it later needs a new volume, which deletes the data: `docker compose down -v`.
+
 ## API
 
 `apps/api` is a NestJS app (ESM, tested with Vitest). It listens on port 3001 unless `PORT` is set.
