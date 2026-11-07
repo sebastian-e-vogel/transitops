@@ -1,0 +1,11 @@
+{
+  "name": "transitops",
+  "private": true,
+  "packageManager": "pnpm@12.18.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}
