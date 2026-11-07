@@ -26,7 +26,7 @@ pnpm install
 
 ## API
 
-`apps/api` is a NestJS app (ESM, tested with Vitest). It listens on port 3001 unless `PORT` is set.
+`apps/api` is a NestJS app (ESM, tested with Vitest). It listens on port 3001 unless `PORT` is set. All routes live under the `/api/v1` prefix (set in `configureApp`). `GET /api/v1/health` returns `{ "status": "ok" }`.
 
 ```sh
 pnpm --filter @transitops/api start:dev   # dev mode with watch, http://localhost:3001
