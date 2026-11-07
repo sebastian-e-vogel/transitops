@@ -34,6 +34,9 @@ pnpm --filter @transitops/api build
 pnpm --filter @transitops/api start:prod  # runs dist/main, build first
 pnpm --filter @transitops/api test        # unit tests
 pnpm --filter @transitops/api test:e2e    # e2e tests
+pnpm --filter @transitops/api lint        # type-aware oxlint
+pnpm --filter @transitops/api format      # write Prettier formatting
+pnpm --filter @transitops/api format:check
 ```
 
 ## Web
