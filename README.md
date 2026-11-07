@@ -35,3 +35,17 @@ pnpm --filter @transitops/api start:prod  # runs dist/main, build first
 pnpm --filter @transitops/api test        # unit tests
 pnpm --filter @transitops/api test:e2e    # e2e tests
 ```
+
+## Web
+
+`apps/web` is a Next.js app (App Router, tested with Vitest). It listens on port 3000 by default.
+
+```sh
+pnpm --filter @transitops/web dev           # dev server, http://localhost:3000
+pnpm --filter @transitops/web build
+pnpm --filter @transitops/web start         # serves the build, build first
+pnpm --filter @transitops/web test
+pnpm --filter @transitops/web lint
+pnpm --filter @transitops/web format        # write Prettier formatting
+pnpm --filter @transitops/web format:check
+```
