@@ -5,7 +5,6 @@ import {
   check,
   doublePrecision,
   index,
-  pgEnum,
   pgTable,
   primaryKey,
   text,
@@ -13,10 +12,7 @@ import {
   unique,
   uuid,
 } from 'drizzle-orm/pg-core';
-
-// Mirrors DataSourceSchema and ProviderSchema in @transitops/contracts.
-export const dataSourceEnum = pgEnum('data_source', ['LIVE', 'SIMULATED']);
-export const providerEnum = pgEnum('provider', ['MBTA', 'SIMULATOR']);
+import { dataSourceEnum, providerEnum } from './enums.js';
 
 const timestamptz = (name: string) =>
   timestamp(name, { withTimezone: true, mode: 'date' });

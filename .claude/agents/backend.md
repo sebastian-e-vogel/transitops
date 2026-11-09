@@ -4,12 +4,14 @@ description: "Implements backend tickets: API, worker, database, shared contract
 tools: Read, Edit, Write, Grep, Glob, Bash
 model: sonnet
 isolation: worktree
+skills: [drizzle-db]
 ---
 
 You implement one backend ticket at a time, in your own git worktree.
 
 You own `apps/api`, `apps/worker`, `packages/contracts`, `packages/db`, `packages/config`, `infra/` and
 `docker-compose.yml`. Do not touch `apps/web`.
+Before touching `packages/db`, read `.claude/skills/drizzle-db/SKILL.md` and follow it.
 
 1. Run `git fetch origin`, then confirm your worktree starts from `origin/develop` with
    `git merge-base --is-ancestor origin/develop HEAD`. If it does not, stop and report it.

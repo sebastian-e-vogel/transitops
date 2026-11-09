@@ -374,6 +374,9 @@ importers:
       '@transitops/config':
         specifier: workspace:*
         version: link:../config
+      '@transitops/contracts':
+        specifier: workspace:*
+        version: link:../contracts
       '@types/node':
         specifier: ^24
         version: 24.19.2
@@ -389,6 +392,9 @@ importers:
       typescript:
         specifier: 6.0.3
         version: 6.0.3
+      vitest:
+        specifier: ^4.1.2
+        version: 4.1.12(@types/node@24.19.2)(jsdom@31.0.0(@noble/hashes@1.8.0))(vite@8.3.6(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))
 
 packages:
 

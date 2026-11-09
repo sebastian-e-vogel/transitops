@@ -16,7 +16,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "dotenv": "^18.0.9",
@@ -25,10 +28,12 @@
   },
   "devDependencies": {
     "@transitops/config": "workspace:*",
+    "@transitops/contracts": "workspace:*",
     "@types/node": "^24",
     "@types/pg": "^8.23.1",
     "drizzle-kit": "1.0.0-rc.5",
     "tsx": "^4.23.15",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "vitest": "^4.1.2"
   }
 }
