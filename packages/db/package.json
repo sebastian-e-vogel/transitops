@@ -1,0 +1,39 @@
+{
+  "name": "@transitops/db",
+  "version": "0.0.1",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "drizzle-orm": "1.0.0-rc.5",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@transitops/config": "workspace:*",
+    "@transitops/contracts": "workspace:*",
+    "@types/node": "^24",
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "1.0.0-rc.5",
+    "tsx": "^4.23.15",
+    "typescript": "6.0.3",
+    "vitest": "^4.1.2"
+  }
+}

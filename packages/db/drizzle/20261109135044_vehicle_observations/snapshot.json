@@ -1,0 +1,902 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "729eccac-d491-472a-8c16-102b472ae138",
+  "prevIds": [
+    "0324f951-25d3-466a-a15b-700066166c6f"
+  ],
+  "footprints": [
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "data_source"
+      ],
+      "writes": [
+        "s|enum|public.data_source",
+        "n|enum|public.data_source",
+        "e|enum|public.data_source",
+        "n|type|public.data_source"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "provider"
+      ],
+      "writes": [
+        "s|enum|public.provider",
+        "n|enum|public.provider",
+        "e|enum|public.provider",
+        "n|type|public.provider"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "vehicle_current_state"
+      ],
+      "writes": [
+        "s|tbl|public.vehicle_current_state",
+        "n|tbl|public.vehicle_current_state",
+        "e|tbl|public.vehicle_current_state",
+        "n|rel|public.vehicle_current_state",
+        "n|type|public.vehicle_current_state",
+        "n|rel|public.vehicle_current_state_pkey"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.data_source",
+        "n|enum|public.provider"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "vehicle_positions"
+      ],
+      "writes": [
+        "s|tbl|public.vehicle_positions",
+        "n|tbl|public.vehicle_positions",
+        "e|tbl|public.vehicle_positions",
+        "n|rel|public.vehicle_positions",
+        "n|type|public.vehicle_positions",
+        "n|rel|public.vehicle_positions_pkey",
+        "n|rel|public.vehicle_positions_source_provider_event_id_unique"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.data_source",
+        "n|enum|public.provider"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "vehicles"
+      ],
+      "writes": [
+        "s|tbl|public.vehicles",
+        "n|tbl|public.vehicles",
+        "e|tbl|public.vehicles",
+        "n|rel|public.vehicles",
+        "n|type|public.vehicles",
+        "n|rel|public.vehicles_pkey",
+        "n|rel|public.vehicles_provider_provider_vehicle_id_unique"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.provider"
+      ]
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "vehicle_positions",
+        "vehicle_positions_vehicle_id_observed_at_index"
+      ],
+      "writes": [
+        "s|idx|public.vehicle_positions_vehicle_id_observed_at_index",
+        "n|idx|public.vehicle_positions_vehicle_id_observed_at_index",
+        "e|idx|public.vehicle_positions_vehicle_id_observed_at_index",
+        "n|rel|public.vehicle_positions_vehicle_id_observed_at_index"
+      ],
+      "reads": [
+        "n|tbl|public.vehicle_positions",
+        "n|sch|public",
+        "n|col|public.vehicle_positions.vehicle_id",
+        "n|col|public.vehicle_positions.observed_at"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "vehicle_current_state"
+      ],
+      "writes": [
+        "s|fk|public.vehicle_current_state.vehicle_current_state_vehicle_id_vehicles_id_fkey",
+        "n|fk|public.vehicle_current_state.vehicle_current_state_vehicle_id_vehicles_id_fkey",
+        "e|fk|public.vehicle_current_state.vehicle_current_state_vehicle_id_vehicles_id_fkey",
+        "n|con|public.vehicle_current_state.vehicle_current_state_vehicle_id_vehicles_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.vehicle_current_state",
+        "n|sch|public",
+        "n|tbl|public.vehicles",
+        "n|sch|public",
+        "n|col|public.vehicle_current_state.vehicle_id",
+        "n|col|public.vehicles.id",
+        "e|uniqueness|public.vehicles.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "vehicle_positions"
+      ],
+      "writes": [
+        "s|fk|public.vehicle_positions.vehicle_positions_vehicle_id_vehicles_id_fkey",
+        "n|fk|public.vehicle_positions.vehicle_positions_vehicle_id_vehicles_id_fkey",
+        "e|fk|public.vehicle_positions.vehicle_positions_vehicle_id_vehicles_id_fkey",
+        "n|con|public.vehicle_positions.vehicle_positions_vehicle_id_vehicles_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.vehicle_positions",
+        "n|sch|public",
+        "n|tbl|public.vehicles",
+        "n|sch|public",
+        "n|col|public.vehicle_positions.vehicle_id",
+        "n|col|public.vehicles.id",
+        "e|uniqueness|public.vehicles.id"
+      ]
+    }
+  ],
+  "deltas": [
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "vehicle_current_state",
+        "isRlsEnabled": false,
+        "entityType": "tables"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "vehicle_positions",
+        "isRlsEnabled": false,
+        "entityType": "tables"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "vehicles",
+        "isRlsEnabled": false,
+        "entityType": "tables"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "data_source",
+        "values": [
+          "LIVE",
+          "SIMULATED"
+        ],
+        "entityType": "enums"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "provider",
+        "values": [
+          "MBTA",
+          "SIMULATOR"
+        ],
+        "entityType": "enums"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "vehicle_id",
+        "type": "uuid",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "source",
+        "type": "data_source",
+        "typeSchema": "public",
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "provider",
+        "type": "provider",
+        "typeSchema": "public",
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "route_id",
+        "type": "text",
+        "typeSchema": null,
+        "notNull": false,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "trip_id",
+        "type": "text",
+        "typeSchema": null,
+        "notNull": false,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "lat",
+        "type": "double precision",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "lon",
+        "type": "double precision",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "bearing",
+        "type": "double precision",
+        "typeSchema": null,
+        "notNull": false,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "speed_mps",
+        "type": "double precision",
+        "typeSchema": null,
+        "notNull": false,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "observed_at",
+        "type": "timestamp with time zone",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "received_at",
+        "type": "timestamp with time zone",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "has_provider_timestamp",
+        "type": "boolean",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "is_active",
+        "type": "boolean",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "true",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "now()",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "id",
+        "type": "bigint",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": {
+          "type": "always",
+          "name": "vehicle_positions_id_seq",
+          "increment": "1",
+          "startWith": "1",
+          "minValue": "1",
+          "maxValue": "9223372036854775807",
+          "cache": 1,
+          "cycle": false
+        },
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "vehicle_id",
+        "type": "uuid",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "source",
+        "type": "data_source",
+        "typeSchema": "public",
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "provider",
+        "type": "provider",
+        "typeSchema": "public",
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "event_id",
+        "type": "text",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "route_id",
+        "type": "text",
+        "typeSchema": null,
+        "notNull": false,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "trip_id",
+        "type": "text",
+        "typeSchema": null,
+        "notNull": false,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "lat",
+        "type": "double precision",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "lon",
+        "type": "double precision",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "bearing",
+        "type": "double precision",
+        "typeSchema": null,
+        "notNull": false,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "speed_mps",
+        "type": "double precision",
+        "typeSchema": null,
+        "notNull": false,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "observed_at",
+        "type": "timestamp with time zone",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "received_at",
+        "type": "timestamp with time zone",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "has_provider_timestamp",
+        "type": "boolean",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicles",
+        "name": "id",
+        "type": "uuid",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "gen_random_uuid()",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicles",
+        "name": "provider",
+        "type": "provider",
+        "typeSchema": "public",
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicles",
+        "name": "provider_vehicle_id",
+        "type": "text",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicles",
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "now()",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "vehicle_positions_vehicle_id_observed_at_index",
+        "nameExplicit": false,
+        "columns": [
+          {
+            "value": "vehicle_id",
+            "isExpression": false,
+            "asc": true,
+            "nullsFirst": false,
+            "opclass": null
+          },
+          {
+            "value": "observed_at",
+            "isExpression": false,
+            "asc": false,
+            "nullsFirst": false,
+            "opclass": null
+          }
+        ],
+        "isUnique": false,
+        "where": null,
+        "with": "",
+        "method": "btree",
+        "concurrently": false,
+        "entityType": "indexes"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "vehicle_current_state_vehicle_id_vehicles_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "vehicle_id"
+        ],
+        "schemaTo": "public",
+        "tableTo": "vehicles",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "RESTRICT",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "vehicle_positions_vehicle_id_vehicles_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "vehicle_id"
+        ],
+        "schemaTo": "public",
+        "tableTo": "vehicles",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "RESTRICT",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_current_state",
+        "name": "vehicle_current_state_pkey",
+        "columns": [
+          "vehicle_id",
+          "source"
+        ],
+        "nameExplicit": false,
+        "entityType": "pks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "vehicle_positions_pkey",
+        "columns": [
+          "id"
+        ],
+        "nameExplicit": false,
+        "entityType": "pks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicles",
+        "name": "vehicles_pkey",
+        "columns": [
+          "id"
+        ],
+        "nameExplicit": false,
+        "entityType": "pks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "vehicle_positions_source_provider_event_id_unique",
+        "nameExplicit": false,
+        "columns": [
+          "source",
+          "provider",
+          "event_id"
+        ],
+        "nullsNotDistinct": false,
+        "entityType": "uniques"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicles",
+        "name": "vehicles_provider_provider_vehicle_id_unique",
+        "nameExplicit": false,
+        "columns": [
+          "provider",
+          "provider_vehicle_id"
+        ],
+        "nullsNotDistinct": false,
+        "entityType": "uniques"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "vehicle_positions",
+        "name": "vehicle_positions_source_provider_check",
+        "value": "(\"source\" = 'LIVE' AND \"provider\" = 'MBTA') OR (\"source\" = 'SIMULATED' AND \"provider\" = 'SIMULATOR')",
+        "entityType": "checks"
+      }
+    }
+  ]
+}
