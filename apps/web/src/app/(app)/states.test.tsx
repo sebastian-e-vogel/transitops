@@ -24,9 +24,9 @@ test('error page shows static text and the button calls retry', () => {
   expect(retry).toHaveBeenCalledTimes(1);
 });
 
-test('not-found page links to the home route', () => {
+test('not-found page links to the Live Map', () => {
   const { container } = render(<NotFound />);
 
   expect(container.querySelector('h1')?.textContent).toBe('Page not found');
-  expect(container.querySelector('a')?.getAttribute('href')).toBe('/');
+  expect(container.querySelector('a')?.getAttribute('href')).toBe('/map');
 });

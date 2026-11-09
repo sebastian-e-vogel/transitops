@@ -56,7 +56,7 @@ test('renders the heading and description without its own main', () => {
 import { cleanup, render } from '@testing-library/react';
 import { afterEach, expect, test } from 'vitest';
 
-import LiveMapPage from '@/app/(app)/page';
+import LiveMapPage from '@/app/(app)/map/page';
 import IncidentsPage from '@/app/(app)/incidents/page';
 
 afterEach(cleanup);

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const NAV_LINKS = [
-  { href: '/', label: 'Live Map' },
+  { href: '/map', label: 'Live Map' },
   { href: '/incidents', label: 'Incidents' },
   { href: '/replay', label: 'Replay' },
   { href: '/simulation', label: 'Simulation' },
