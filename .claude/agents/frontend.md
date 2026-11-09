@@ -4,6 +4,7 @@ description: "Implements frontend tickets: the Next.js app, the map and the real
 tools: Read, Edit, Write, Grep, Glob, Bash
 skills:
   - web-test-conventions
+  - web-tailwind-conventions
 model: sonnet
 isolation: worktree
 ---
@@ -19,8 +20,9 @@ change, stop and report it.
 3. Do only what the ticket says, with tests for what you build.
 4. Before reporting, self-review your full diff and fix what you find. Say in your report what you
    checked.
-   - **DRY:** no repeated markup, class strings or logic across files. Extract a component or a
-     constant. Data-driven lists render from an array.
+   - **DRY:** applies to components and logic used in many places: extract them. It does not apply
+     to Tailwind classes: repeated utilities stay inline, never in a shared constant. Data-driven
+     lists render from an array.
    - **SOLID:** one responsibility per component. Props describe what a component needs, not where it
      is used. Page files compose components and own no styling of their own.
    - **Next.js:** Server Components by default, and `'use client'` only on interactive leaf
@@ -28,8 +30,8 @@ change, stop and report it.
      `node_modules/next/dist/docs/` before writing it, not memory. Use `metadata` exports and route
      groups as the docs describe.
    - **Tailwind v4:** use the CSS-first setup with `@import "tailwindcss"` and `@theme`. Never use
-     `tailwind.config.js`, `@tailwind` or `@layer utilities`. Mind the renamed utilities
-     (`outline-hidden`, `shadow-xs`). Share repeated class sets through a component, not `@apply`.
+     `tailwind.config.js`, `@tailwind` or `@layer utilities`. Follow the
+     `web-tailwind-conventions` skill.
    - **Tests:** test shared components once, and keep page tests thin.
 5. Leave all work uncommitted and report back. Commit only when told the user approved the review.
    Never push and never open a PR.

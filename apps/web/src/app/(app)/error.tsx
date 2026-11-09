@@ -10,7 +10,7 @@ export default function ErrorPage({ retry }: { retry: () => void }) {
       <button
         type="button"
         className="mt-4 border px-3 py-1 underline focus-visible:outline-2 focus-visible:outline-offset-2"
-        onClick={() => retry()}
+        onClick={retry}
       >
         Try again
       </button>
