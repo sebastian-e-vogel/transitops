@@ -32,6 +32,10 @@ Every link and button keeps a visible focus ring:
 
 `focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text`
 
+## Form controls
+
+Form controls use `border-muted`, because `border` is too faint for input edges.
+
 ## Hover
 
 There is no hover color token. Primary buttons use `hover:underline` or no hover change, never a

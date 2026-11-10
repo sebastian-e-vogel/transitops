@@ -12,7 +12,7 @@ test('renders one nav link per route', () => {
   );
 
   expect(hrefs).toEqual([
-    '/',
+    '/map',
     '/incidents',
     '/replay',
     '/simulation',
